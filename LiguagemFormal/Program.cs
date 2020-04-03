@@ -50,8 +50,15 @@ namespace LiguagemFormal
                 variaveisIniciais.RemoveAll(i => i.Equals("") || !i.Any(char.IsUpper));
                 regrasVariaveis.RemoveAll(i => i.Regra.Equals("") || i.Variavel.Equals(""));
 
-
-
+                //Adicionar variavel inicial em regras.
+                variaveisIniciais.ForEach(i =>
+                {
+                    regrasVariaveis.Add(new RegrasDto()
+                    {
+                        Variavel = 'S',
+                        Regra = i
+                    });
+                });
 
                 var rnd = new Random();
                 var vInicioRnd = rnd.Next(0, variaveisIniciais.Count - 1);
